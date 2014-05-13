@@ -23,7 +23,7 @@ angular.module('json-print', [])
 
                 number: value(/([-]?[\d]*\.?[\d]+)(?!.*")/),
 
-                string: value(/("[^<>:].*")/),
+                string: value(/("[^:].*")/),
 
                 object: /}|{/gm,
 
@@ -44,7 +44,10 @@ angular.module('json-print', [])
                     return '<span class="json-print-number json-print-' + numberClass + '">' + match + '</span>';
                 },
 
-                string: '<span class="json-print-string">$&</span>',
+                string: function(match) {
+                    var escapedStr = match.replace(/</gm, '&lt;').replace(/>/gm, '&gt;');
+                    return '<span class="json-print-string">' + escapedStr + '</span>';
+                },
 
                 object: '<span class="json-print-object">$&</span>',
 

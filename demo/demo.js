@@ -14,6 +14,7 @@ angular.module('Demo', ['json-print']).controller('DemoCtrl', function($scope) {
         "married": false,
         "children": null,
         "lonely": true,
+        "html": "<p>This <br> is a paragraph <br> with <br> line breaks</p>",
         "something": [
             "else",
             true,

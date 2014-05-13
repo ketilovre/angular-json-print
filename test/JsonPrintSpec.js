@@ -19,11 +19,11 @@ describe("JsonPrint", function() {
             "married": false,
             "children": null,
             "lonely": true,
+            "html": "<p>This <br> is a paragraph <br> with <br> line breaks</p>",
             "something": [
                 "else",
                 true,
                 12345,
-                null,
                 {
                     "prop": false
                 }
@@ -66,15 +66,15 @@ describe("JsonPrint", function() {
 
             it('should find strings', function() {
                 var result = JSON.stringify(json, null, 1).match(JsonParser.patterns.string);
-                expect(result).toEqual(['"John"', '"Smith"', '"else"', '"21 2nd Street"', '"New York"', '"NY"', '"home"',
-                    '"212 555-1239"', '"fax"', '"646 555-4567"', '"male"']);
+                expect(result).toEqual(['"John"', '"Smith"', '"<p>This <br> is a paragraph <br> with <br> line breaks</p>"',
+                    '"else"', '"21 2nd Street"', '"New York"', '"NY"', '"home"', '"212 555-1239"', '"fax"', '"646 555-4567"', '"male"']);
             });
 
             it('should find properties', function() {
                 var result = JSON.stringify(json, null, 1).match(JsonParser.patterns.prop);
-                expect(result).toEqual(['"firstName"', '"lastName"', '"age"', '"money"', '"hope"', '"married"',
-                    '"children"', '"lonely"', '"something"', '"prop"', '"address"', '"streetAddress"', '"city"', '"state"',
-                    '"postalCode"', '"phoneNumber"', '"type"', '"number"', '"type"', '"number"', '"gender"', '"type"']);
+                expect(result).toEqual([ '"firstName"', '"lastName"', '"age"', '"money"', '"hope"', '"married"', '"children"',
+                    '"lonely"', '"html"', '"something"', '"prop"', '"address"', '"streetAddress"', '"city"', '"state"',
+                    '"postalCode"', '"phoneNumber"', '"type"', '"number"', '"type"', '"number"', '"gender"', '"type"' ]);
             });
 
             it("should find booleans", function() {
@@ -84,7 +84,7 @@ describe("JsonPrint", function() {
 
             it('should find nulls', function() {
                 var result = JSON.stringify(json, null, 1).match(JsonParser.patterns.null);
-                expect(result).toEqual(['null', 'null']);
+                expect(result).toEqual(['null']);
             });
 
             it('should find numbers', function() {
@@ -103,18 +103,28 @@ describe("JsonPrint", function() {
             });
         });
 
-        describe('number', function() {
+        describe('Replacers', function() {
 
-            it('should recognize zero', function() {
-                expect(JsonParser.replacers.number(0)).toContain('zero');
+            describe('number', function() {
+
+                it('should recognize zero', function() {
+                    expect(JsonParser.replacers.number(0)).toContain('zero');
+                });
+
+                it('should recognize positive numbers', function() {
+                    expect(JsonParser.replacers.number(1)).toContain('plus');
+                });
+
+                it('should recognize negative numbers', function() {
+                    expect(JsonParser.replacers.number(-1)).toContain('minus');
+                });
             });
 
-            it('should recognize positive numbers', function() {
-                expect(JsonParser.replacers.number(1)).toContain('plus');
-            });
+            describe('string', function() {
 
-            it('should recognize negative numbers', function() {
-                expect(JsonParser.replacers.number(-1)).toContain('minus');
+                it('should escape any HTML-brackets', function() {
+                    expect(JsonParser.replacers.string('<p>Some HTML</p>')).toContain('&lt;p&gt;Some HTML&lt;/p&gt;');
+                });
             });
         });
 
