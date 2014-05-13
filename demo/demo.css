@@ -1,0 +1,51 @@
+.json-print-prop {
+    color: darkmagenta;
+}
+
+.json-print-bool {
+    color: darkorange;
+}
+
+.json-print-true {
+    color: darkorange;
+}
+
+.json-print-false {
+    color: darkorange;
+}
+
+.json-print-number {
+    color: darkblue;
+}
+
+.json-print-zero {
+    color: darkcyan;
+}
+
+.json-print-plus {
+    color: darkblue;
+}
+
+.json-print-minus {
+    color: darkred;
+}
+
+.json-print-null {
+    color: darkorange;
+}
+
+.json-print-string {
+    color:darkgreen;
+}
+
+.json-print-object {
+    color: darkgray;
+}
+
+.json-print-array {
+    color: darkgray;
+}
+
+pre {
+    font-weight: bold;
+}

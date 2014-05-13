@@ -1,0 +1,30 @@
+{
+    "bitwise": true,
+    "forin": true,
+    "freeze": true,
+    "noempty": true,
+    "nonew": true,
+    "unused": true,
+    "strict": true,
+    "devel": true,
+
+    "expr": true,
+    "curly": true,
+    "eqeqeq": true,
+    "node": true,
+    "immed": true,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "sub": true,
+    "undef": true,
+    "boss": true,
+    "eqnull": true,
+    "browser": true,
+    "maxparams": 10,
+    "maxdepth": 5,
+    "maxstatements": 25,
+    "maxcomplexity": 10,
+
+    "indent": 4
+}

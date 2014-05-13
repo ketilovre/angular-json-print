@@ -1,0 +1,12 @@
+{
+  "name": "angular-json-print",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "0.4.4",
+    "grunt-contrib-jshint": "0.10.0",
+    "grunt-karma": "0.8.3",
+    "karma": "0.12.16",
+    "karma-jasmine": "0.1.5",
+    "karma-phantomjs-launcher": "0.1.4"
+  }
+}

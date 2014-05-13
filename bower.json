@@ -1,0 +1,16 @@
+{
+  "name": "angular-json-print",
+  "version": "0.0.1",
+  "main": [
+    "src/json-print.js"
+  ],
+  "ignore": [
+    ".jshintrc",
+    "demo"
+  ],
+  "devDependencies": {
+    "angular": "1.2.16",
+    "bootstrap": "3.1.1",
+    "angular-mocks": "~1.2.16"
+  }
+}
