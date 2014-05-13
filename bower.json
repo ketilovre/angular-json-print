@@ -12,7 +12,8 @@
     "Gruntfile.js",
     "package.json",
     ".bowerrc",
-    ".travis.yml"
+    ".travis.yml",
+    "src"
   ],
   "devDependencies": {
     "angular": "1.2.16",

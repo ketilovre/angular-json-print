@@ -4,6 +4,7 @@ module.exports = function(grunt) {
     "use strict";
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-karma-coveralls');
 
@@ -14,6 +15,14 @@ module.exports = function(grunt) {
                 jshintrc: '.jshintrc'
             },
             all: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
+        },
+
+        uglify: {
+            target: {
+                files: {
+                    'json-print.min.js': ['src/json-print.js']
+                }
+            }
         },
 
         coveralls: {
