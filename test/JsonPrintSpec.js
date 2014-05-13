@@ -89,7 +89,7 @@ describe("JsonPrint", function() {
 
             it('should find numbers', function() {
                 var result = JSON.stringify(json, null, 1).match(JsonParser.patterns.number);
-                expect(result).toEqual([ '25', '-5000', '0', '12345' ]);
+                expect(result).toEqual(['25', '-5000', '0', '12345', '10021']);
             });
 
             it('should find objects', function() {

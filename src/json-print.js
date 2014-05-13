@@ -21,7 +21,7 @@ angular.module('json-print', [])
 
                 null: value(/(null)/),
 
-                number: value(/([-]?[\d]*\.?[\d]+)(?!["\s])/),
+                number: value(/([-]?[\d]*\.?[\d]+)(?!.*")/),
 
                 string: value(/("[^<>:].*")/),
 
