@@ -6,7 +6,13 @@
   ],
   "ignore": [
     ".jshintrc",
-    "demo"
+    "demo",
+    "test",
+    ".gitignore",
+    "Gruntfile.js",
+    "package.json",
+    ".bowerrc",
+    ".travis.yml"
   ],
   "devDependencies": {
     "angular": "1.2.16",

@@ -37,7 +37,7 @@ module.exports = function(grunt) {
                         'test/JsonPrintSpec.js'
                     ],
                     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-                    reporters: ['progress', 'coverage'],
+                    reporters: ['dots', 'coverage'],
                     preprocessors: {
                         'src/json-print.js': 'coverage'
                     },

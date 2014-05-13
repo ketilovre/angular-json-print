@@ -3,7 +3,7 @@
 angular.module('Demo', ['json-print']).controller('DemoCtrl', function($scope) {
     "use strict";
 
-    $scope.indent = 1;
+    $scope.indent = 4;
 
     $scope.jsonObj = {
         "firstName": "John",
