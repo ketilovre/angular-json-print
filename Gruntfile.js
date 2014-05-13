@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            all: ['Gruntfile.js', 'src/**/*.js']
+            all: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
         },
 
         coveralls: {
@@ -36,7 +36,6 @@ module.exports = function(grunt) {
                         'src/json-print.js',
                         'test/JsonPrintSpec.js'
                     ],
-                    // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
                     reporters: ['dots', 'coverage'],
                     preprocessors: {
                         'src/json-print.js': 'coverage'
@@ -59,7 +58,6 @@ module.exports = function(grunt) {
                 }
             }
         }
-
     });
 
     grunt.registerTask('default', ['jshint', 'karma']);

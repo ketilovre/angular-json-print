@@ -21,7 +21,7 @@
     "boss": true,
     "eqnull": true,
     "browser": true,
-    "maxparams": 10,
+    "maxparams": 5,
     "maxdepth": 5,
     "maxstatements": 25,
     "maxcomplexity": 10,

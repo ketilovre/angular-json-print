@@ -131,6 +131,7 @@ describe("JsonPrint", function() {
         describe('print', function() {
 
             it('should always return indented JSON, ref. Weaknesses', function() {
+                expect(JSON.stringify(json)).not.toContain("\n");
                 expect(JsonParser.print(json)).toContain("\n");
                 expect(JsonParser.print(json, 0)).toContain("\n");
                 expect(JsonParser.print(json, -1)).toContain("\n");
@@ -167,7 +168,7 @@ describe("JsonPrint", function() {
             $scope.jsonStr = JSON.stringify(json);
         });
 
-        it('should print treat string and object sources equally', function() {
+        it('should treat string and object sources equally', function() {
             var element = $compile('<pre data-json-print data-json="json"></pre>')($scope);
             var strElement = $compile('<pre data-json-print data-json="jsonStr"></pre>')($scope);
             $scope.$digest();
