@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-karma-coveralls');
 
     grunt.initConfig({
 
@@ -13,6 +14,15 @@ module.exports = function(grunt) {
                 jshintrc: '.jshintrc'
             },
             all: ['Gruntfile.js', 'src/**/*.js']
+        },
+
+        coveralls: {
+            options: {
+                coverage_dir: 'coverage',
+                dryRun: false,
+                force: true,
+                recursive: true
+            }
         },
 
         karma: {
@@ -27,9 +37,13 @@ module.exports = function(grunt) {
                         'test/JsonPrintSpec.js'
                     ],
                     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-                    reporters: ['progress', 'coverage'],
+                    reporters: ['coverage'],
                     preprocessors: {
                         'src/json-print.js': 'coverage'
+                    },
+                    coverageReporter: {
+                        type: "lcov",
+                        dir: "coverage"
                     },
                     port: 9876,
                     colors: true,

@@ -1,15 +1,17 @@
 {
-    "name": "angular-json-print",
-    "version": "0.0.1",
-    "scripts": {
-        "test": "grunt"
-    },
-    "devDependencies": {
-        "grunt": "0.4.4",
-        "grunt-contrib-jshint": "0.10.0",
-        "grunt-karma": "0.8.3",
-        "karma": "0.12.16",
-        "karma-jasmine": "0.1.5",
-        "karma-phantomjs-launcher": "0.1.4"
-    }
+  "name": "angular-json-print",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "grunt"
+  },
+  "devDependencies": {
+    "coveralls": "^2.10.0",
+    "grunt": "0.4.4",
+    "grunt-contrib-jshint": "0.10.0",
+    "grunt-karma": "0.8.3",
+    "grunt-karma-coveralls": "^2.5.0",
+    "karma": "0.12.16",
+    "karma-jasmine": "0.1.5",
+    "karma-phantomjs-launcher": "0.1.4"
+  }
 }
