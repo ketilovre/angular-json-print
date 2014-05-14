@@ -95,9 +95,9 @@ angular.module('json-print', [])
         return {
             restrict: 'AEC',
             link: function(scope, element, attrs) {
-                scope.$watch(attrs.json, function(value) {
+                scope.$watch(attrs.jsonPrint, function(value) {
                     if (value) {
-                        element.html(JsonParser.print(JsonParser.objectify(value), attrs.indent));
+                        element.html(JsonParser.print(JsonParser.objectify(value), attrs.jsonIndent));
                     }
                 });
             }

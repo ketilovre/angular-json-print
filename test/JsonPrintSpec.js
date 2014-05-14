@@ -56,6 +56,7 @@ describe("JsonPrint", function() {
 
             /**
              * This is a weakness in the regex-patterns, which I've been unable to solve.
+             * See test case for 'print'.
              */
             it('breaks on un-indented JSON-strings', function() {
                 expect(JSON.stringify(json).match(JsonParser.patterns.string)).toEqual(null);
@@ -130,7 +131,7 @@ describe("JsonPrint", function() {
 
         describe('print', function() {
 
-            it('should always return indented JSON, ref. Weaknesses', function() {
+            it('should always return indented JSON, see Weaknesses', function() {
                 expect(JSON.stringify(json)).not.toContain("\n");
                 expect(JsonParser.print(json)).toContain("\n");
                 expect(JsonParser.print(json, 0)).toContain("\n");
@@ -169,15 +170,15 @@ describe("JsonPrint", function() {
         });
 
         it('should treat string and object sources equally', function() {
-            var element = $compile('<pre data-json-print data-json="json"></pre>')($scope);
-            var strElement = $compile('<pre data-json-print data-json="jsonStr"></pre>')($scope);
+            var element = $compile('<pre data-json-print="json"></pre>')($scope);
+            var strElement = $compile('<pre data-json-print="jsonStr"></pre>')($scope);
             $scope.$digest();
 
             expect(element.html()).toEqual(strElement.html());
         });
 
         it('should print a load of json if given an valid input', function() {
-            var element = $compile('<pre data-json-print data-json="json"></pre>')($scope);
+            var element = $compile('<pre data-json-print="json"></pre>')($scope);
             $scope.$digest();
 
             expect(element.html()).toContain('<span class="json-print-string">"Smith"</span>');
@@ -190,7 +191,7 @@ describe("JsonPrint", function() {
         });
 
         it('should not clear the current content if given invalid JSON', function() {
-            var strElement = $compile('<pre data-json-print data-json="jsonStr"></pre>')($scope);
+            var strElement = $compile('<pre data-json-print="jsonStr"></pre>')($scope);
             $scope.$digest();
 
             expect(strElement.html()).toContain('<span class="json-print-string">"Smith"</span>');

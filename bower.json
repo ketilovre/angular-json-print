@@ -1,8 +1,8 @@
 {
   "name": "angular-json-print",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": [
-    "src/json-print.js"
+    "json-print.min.js"
   ],
   "ignore": [
     ".jshintrc",
