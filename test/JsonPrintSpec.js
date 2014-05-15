@@ -167,39 +167,56 @@ describe("JsonPrint", function() {
             $scope = $rootScope.$new();
             $scope.json = json;
             $scope.jsonStr = JSON.stringify(json);
+            $scope.undef = undefined;
+            $scope.null = null;
+            $scope.empty = '';
         });
 
         it('should treat string and object sources equally', function() {
-            var element = $compile('<pre data-json-print="json"></pre>')($scope);
-            var strElement = $compile('<pre data-json-print="jsonStr"></pre>')($scope);
+            var elem = $compile('<pre data-json-print="json"></pre>')($scope);
+            var strElem = $compile('<pre data-json-print="jsonStr"></pre>')($scope);
             $scope.$digest();
 
-            expect(element.html()).toEqual(strElement.html());
+            expect(elem.html()).toEqual(strElem.html());
         });
 
         it('should print a load of json if given an valid input', function() {
-            var element = $compile('<pre data-json-print="json"></pre>')($scope);
+            var elem = $compile('<pre data-json-print="json"></pre>')($scope);
             $scope.$digest();
 
-            expect(element.html()).toContain('<span class="json-print-string">"Smith"</span>');
-            expect(element.html()).toContain('<span class="json-print-prop">"lastName"</span>: ');
-            expect(element.html()).toContain('<span class="json-print-number json-print-plus">12345</span>,');
-            expect(element.html()).toContain('<span class="json-print-bool json-print-true">true</span>,');
-            expect(element.html()).toContain('<span class="json-print-object">}</span>,');
-            expect(element.html()).toContain('<span class="json-print-array">]</span>,');
-            expect(element.html()).toContain('<span class="json-print-string">"21 2nd Street"</span>,');
+            expect(elem.html()).toContain('<span class="json-print-string">"Smith"</span>');
+            expect(elem.html()).toContain('<span class="json-print-prop">"lastName"</span>: ');
+            expect(elem.html()).toContain('<span class="json-print-number json-print-plus">12345</span>,');
+            expect(elem.html()).toContain('<span class="json-print-bool json-print-true">true</span>,');
+            expect(elem.html()).toContain('<span class="json-print-object">}</span>,');
+            expect(elem.html()).toContain('<span class="json-print-array">]</span>,');
+            expect(elem.html()).toContain('<span class="json-print-string">"21 2nd Street"</span>,');
         });
 
         it('should not clear the current content if given invalid JSON', function() {
-            var strElement = $compile('<pre data-json-print="jsonStr"></pre>')($scope);
+            var strElem = $compile('<pre data-json-print="jsonStr"></pre>')($scope);
             $scope.$digest();
 
-            expect(strElement.html()).toContain('<span class="json-print-string">"Smith"</span>');
+            expect(strElem.html()).toContain('<span class="json-print-string">"Smith"</span>');
 
             $scope.jsonStr = null;
             $scope.$digest();
 
-            expect(strElement.html()).toContain('<span class="json-print-string">"Smith"</span>');
+            expect(strElem.html()).toContain('<span class="json-print-string">"Smith"</span>');
+        });
+
+        it('it should print nothing, without warning, on undefined, null or empty input', function() {
+            var undefElem = $compile('<pre data-json-print="undef"></pre>')($scope);
+            $scope.$digest();
+            expect(undefElem.html()).toEqual('');
+
+            var nullElem = $compile('<pre data-json-print="null"></pre>')($scope);
+            $scope.$digest();
+            expect(nullElem.html()).toEqual('');
+
+            var emptyElem = $compile('<pre data-json-print="empty"></pre>')($scope);
+            $scope.$digest();
+            expect(emptyElem.html()).toEqual('');
         });
     });
 });
