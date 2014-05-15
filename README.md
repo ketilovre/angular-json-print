@@ -15,7 +15,7 @@ Angular directive to pretty-print and syntax-highlight JSON.
 
 2. Add the directive `json-print` to an element, along with the data source
   ```html
-    <pre json-print="{Obj|String}" indent="[Int]"></pre>
+    <pre json-print="{Obj|String}" json-indent="[Int]"></pre>
   ```
   *Note*: The use of an element like `<pre>` is required to preserve indentation and line breaks, but has no effect on highlighting.
 
@@ -33,7 +33,7 @@ Values, properties, braces and brackets are wrapped in `<span>`s with the follow
   ```html
     <span class="json-print-prop">"foo"</span>:
   ```
-- Strings. Any HTML-code is escaped and displayed as text.
+- Strings. Any HTML-markup is escaped and displayed as text.
 
   ```html
     <span class="json-print-string">"String with <p>HTML</p>"</span>
