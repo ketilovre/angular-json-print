@@ -5,7 +5,7 @@ Angular directive to pretty-print and syntax-highlight JSON.
 
 [![Build Status](https://travis-ci.org/ketilovre/angular-json-print.svg?branch=master)](https://travis-ci.org/ketilovre/angular-json-print)
 [![Coverage Status](https://coveralls.io/repos/ketilovre/angular-json-print/badge.png?branch=master)](https://coveralls.io/r/ketilovre/angular-json-print?branch=master)
-
+[![Code Climate](https://codeclimate.com/github/ketilovre/angular-json-print.png)](https://codeclimate.com/github/ketilovre/angular-json-print)
 
 ##Usage
 
