@@ -1,7 +1,6 @@
 {
     "bitwise": true,
     "forin": true,
-    "freeze": true,
     "noempty": true,
     "nonew": true,
     "unused": true,

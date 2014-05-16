@@ -8,20 +8,20 @@ angular.module('json-print', [])
         return (function() {
 
             function value(matcher) {
-                var start = /(?!".*":)(?={|\[?)/;
-                var end = /(?=,|\s)/;
+                var start = /(?!".*":)/;
+                var end = /(?=,?$)/;
                 return new RegExp(start.source + matcher.source + end.source, 'gmi');
             }
 
             var patterns = {
 
-                prop: /("\w+?")(?=:)/gim,
+                prop: /("\w+")(?=:)/gim,
 
                 bool: value(/(true|false)/),
 
                 null: value(/(null)/),
 
-                number: value(/(-?\d*\.?\d+)(?!.*")/),
+                number: value(/(-?\d*\.?\d+)/),
 
                 string: value(/("[^:].*")/),
 
