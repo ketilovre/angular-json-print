@@ -15,7 +15,7 @@ angular.module('json-print', [])
 
             var patterns = {
 
-                prop: /("\w+")(?=:)/gim,
+                prop: /("[\$_a-zA-Z][\$\w]+")(?=:)/gim,
 
                 bool: value(/(true|false)/),
 
