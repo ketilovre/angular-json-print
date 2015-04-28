@@ -23,7 +23,7 @@ angular.module('json-print', [])
 
                 number: value(/(-?\d*\.?\d+)/),
 
-                string: value(/("[^:].*")/),
+                string: value(/(?:^\s*".*":\s*)?(".*")(?=,?$)/gmi),
 
                 object: /}|{/gm,
 
@@ -44,9 +44,9 @@ angular.module('json-print', [])
                     return '<span class="json-print-number json-print-' + numberClass + '">' + match + '</span>';
                 },
 
-                string: function(match) {
-                    var escapedStr = match.replace(/</gm, '&lt;').replace(/>/gm, '&gt;');
-                    return '<span class="json-print-string">' + escapedStr + '</span>';
+                string: function(match, p1) {
+                    var escapedStr = p1.replace(/</gm, '&lt;').replace(/>/gm, '&gt;');
+                    return match.replace(p1, '<span class="json-print-string">' + escapedStr + '</span>');
                 },
 
                 object: '<span class="json-print-object">$&</span>',
@@ -60,10 +60,10 @@ angular.module('json-print', [])
                 if (json) {
                     return JSON.stringify(json, null, +indent)
                         .replace(patterns.string, replacers.string)
-                        .replace(patterns.prop, replacers.prop)
                         .replace(patterns.bool, replacers.bool)
                         .replace(patterns.null, replacers.null)
                         .replace(patterns.number, replacers.number)
+                        .replace(patterns.prop, replacers.prop)
                         .replace(patterns.object, replacers.object)
                         .replace(patterns.array, replacers.array);
                 }

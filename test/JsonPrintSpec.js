@@ -66,9 +66,16 @@ describe("JsonPrint", function() {
         describe("Patterns", function() {
 
             it('should find strings', function() {
-                var result = JSON.stringify(json, null, 1).match(JsonParser.patterns.string);
-                expect(result).toEqual(['"John"', '"Smith"', '"<p>This <br> is a paragraph <br> with <br> line breaks</p>"',
-                    '"else"', '"21 2nd Street"', '"New York"', '"NY"', '"home"', '"212 555-1239"', '"fax"', '"646 555-4567"', '"male"']);
+              var result,
+              str = JSON.stringify(json, null, 1),
+              strings = [
+                '"John"', '"Smith"', '"<p>This <br> is a paragraph <br> with <br> line breaks</p>"',
+                '"else"', '"21 2nd Street"', '"New York"', '"NY"', '"home"', '"212 555-1239"', '"fax"',
+                '"646 555-4567"', '"male"'
+              ];
+              while((result = JsonParser.patterns.string.exec(str)) !== null) {
+                expect(strings).toContain(result[1]);
+              }
             });
 
             it('should find properties', function() {
@@ -124,7 +131,8 @@ describe("JsonPrint", function() {
             describe('string', function() {
 
                 it('should escape any HTML-brackets', function() {
-                    expect(JsonParser.replacers.string('<p>Some HTML</p>')).toContain('&lt;p&gt;Some HTML&lt;/p&gt;');
+                    expect(JsonParser.replacers.string('"html": "<p>Some HTML</p>"', '<p>Some HTML</p>'))
+                    .toContain('&lt;p&gt;Some HTML&lt;/p&gt;');
                 });
             });
         });
