@@ -1,6 +1,6 @@
 {
   "name": "angular-json-print",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": [
     "json-print.min.js"
   ],
