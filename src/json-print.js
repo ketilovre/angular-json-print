@@ -99,7 +99,8 @@ angular.module('json-print', [])
                     if (value) {
                         element.html(JsonParser.print(JsonParser.objectify(value), attrs.jsonIndent));
                     }
-                });
+                },
+		true);
             }
         };
     }]
